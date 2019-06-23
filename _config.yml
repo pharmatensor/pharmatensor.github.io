@@ -4,9 +4,9 @@ title: "PharmaTensor"
 description: "Pharmacy Informatics Blog!"
 logo: 'assets/images/logo.png'
 favicon: 'assets/images/logo.png'
-baseurl: /pharmatensor
-google_analytics: 'UA-46278016-1'
-disqus: 'demowebsite'
+baseurl:
+google_analytics: 'UA-142578500-1'
+disqus: 'oelashkar-github-io'
 mailchimp-list: 'https://mailchi.mp/d6335b58c350/frz5ywewinnfrz5ywewinnfrz5ywewinnfrz5ywewinnfrz5ywewinnfrz5ywewinnfrz5ywewinnfrz5ywewinnfrz5ywewinnfrz5ywewinnfrz5ywewinnfrz5ywewinnfrz5ywewinnfrz5yf3'
 include: ["_pages"]
 permalink: /:title/
@@ -19,7 +19,7 @@ authors:
     gravatar: e56154546cf4be74e393c62d1ae9f9d4
     email: omarlashkar@gmail.com
     web: about
-    #twitter: https://twitter.com/wowthemesnet
+    #twitter:
     description: "Author of PharmaTensor."
 
 # Plugins
