@@ -44,8 +44,9 @@ Here we use `dbplyr` package to make a connection with PostgreSQL interface pack
 
 
 ##### Step 3: Connect To PostgreSQL databases
-Make sure you have active connection to the database either actual host or localhost like the example here. In R chunck insert the following code
+Make sure you have active connection to the database either actual host or localhost like the example here. Also you have installed the database drivers on you computer. To connect to R, you can use DBI package or dplyr package. I prefer to use dplyr package as I found it continuously update, and hence create less problems.
 
+ In R chunck insert the following code
 
 ````python
 
@@ -63,8 +64,10 @@ con <- src_postgres(  RPostgreSQL::PostgreSQL(),
 
 Check the opened port and just enter the following parameters in `src_postgres()` function. Note that `dbname` parameter is case sensitive for the name of your database.
 
+Note that askForPassword() will produce a prompt to enter password in a secure way.
+
 ##### Step 4: Create a view for the data you want to subset from certain table
-This step is not necessary, however I find this practice to be the best in order to avoid writing SQL wrapped in R functions as we will see next. If you will just import a table as it is, skip to the next step. <br/>
+This step is not necessary, however I find this practice to be the best in order to avoid writing SQL wrapped in R functions as we will see next. If you will just import a table as it is, skip to the next step. you can write your SQL directly in build_sql() as shown below, however I prefer to write long SQL queries alone to avoid any bugs. <br/>
 
 In SQL chuck write a query that will create a `view` for the data you want to import in R. In the chunck parameters, make sure to set `connection = con`.
 
@@ -78,7 +81,7 @@ create view "trial1" as (
 ````
 
 ##### Step 5: Import the data into R as dataframe
-Finally we will import the data. We will do that using dplyr function `tbl()`. We will wrap it also with `build_sq()` from dbplyr that will allow us to select the data from a SQL query. <br/>
+Finally we will import the data. We will do that using dplyr function `tbl()`. We will wrap it also with `build_sql()` from dbplyr that will allow us to select the data from a SQL query.  You can neglect `build_sql()` and just pass table name to return the whole table. <br/>
 
 In R chunck import and save the data in new variable `dat` :
 
@@ -86,7 +89,7 @@ In R chunck import and save the data in new variable `dat` :
 ````python
 
 ```{r}
-dat <- as.data.frame(tbl(con, build_sql('SELECT * FROM "trial1"')))
+dat <- as.data.frame(tbl(con, build_sql('SELECT 1, 2,3 FROM "trial1"')))
 ```
 
 ````
